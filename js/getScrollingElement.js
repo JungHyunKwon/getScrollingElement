@@ -20,7 +20,7 @@ try {
 			
 			//y가 없을 때
 			if(!y) {
-				y = document.createElement('div');
+				y = document.createElement('span');
 				y.id = 'y';
 
 				body.appendChild(y);
@@ -30,7 +30,7 @@ try {
 			
 			yStyle.width = 0;
 			yStyle.height = (screen.height + 1) + 'px';
-			yStyle.display = 'block';
+			yStyle.display = 'inline-block';
 			
 			for(var i = 0; i < result.length; i++) {
 				var element = result[i],
