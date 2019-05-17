@@ -10,7 +10,7 @@ try {
 
 		/**
 		 * @name getScrollingElement
-		 * @return {array}
+		 * @return {element}
 		 * @since 2018-07-13
 		 */
 		window.getScrollingElement = function() {
@@ -36,7 +36,7 @@ try {
 				var element = result[i],
 					scrollTop = element.scrollTop;
 
-				element.scrollTop = scrollTop + (scrollTop > 0) ? -1 : 1;
+				element.scrollTop += (scrollTop > 0) ? -1 : 1;
 				
 				//스크롤 위치 변경 후 원래 위치와 같을 때
 				if(element.scrollTop === scrollTop) {
@@ -47,6 +47,11 @@ try {
 				}
 			}
 			
+			//결과가 2개일 때
+			if(result.length === 2) {
+				result = body;	
+			}
+
 			yStyle.display = 'none';
 
 			return result;
