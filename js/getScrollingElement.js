@@ -47,8 +47,14 @@ try {
 				}
 			}
 			
+			var resultLength = result.length;
+			
+			//결과가 1개일 때
+			if(resultLength === 1) {
+				result = result[0];
+			
 			//결과가 2개일 때
-			if(result.length === 2) {
+			}else if(resultLength === 2) {
 				result = body;	
 			}
 
