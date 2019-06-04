@@ -3,10 +3,8 @@
  * @version 1.0.0
  */
 try {
-	(function() {
+	(function(_html, _scrollingElement) {
 		'use strict';
-			
-		var html = document.documentElement;
 
 		/**
 		 * @name getScrollingElement
@@ -14,39 +12,39 @@ try {
 		 * @since 2018-07-13
 		 */
 		window.getScrollingElement = function() {
-			var result = document.scrollingElement;
+			var result = _scrollingElement;
 			
 			//요소가 아닐 때
 			if(!result) {
 				var body = document.body,
-					y = document.getElementById('y');
+					element = document.getElementById('element');
 
-				result = [html, body];
+				result = [_html, body];
 				
-				//y가 없을 때
-				if(!y) {
-					y = document.createElement('div');
-					y.id = 'y';
+				//요소가 없을 때
+				if(!element) {
+					element = document.createElement('div');
+					element.id = 'element';
 
-					body.appendChild(y);
+					body.appendChild(element);
 				}
 				
-				var yStyle = y.style;
+				var style = element.style;
 				
-				yStyle.display = 'block';
+				style.display = 'block';
 				
 				for(var i = 0; i < result.length; i++) {
-					var element = result[i],
-						scrollTop = element.scrollTop;
+					var value = result[i],
+						scrollTop = value.scrollTop;
 
-					element.scrollTop += (scrollTop > 0) ? -1 : 1;
+					value.scrollTop += (scrollTop > 0) ? -1 : 1;
 					
 					//스크롤 위치 변경 후 원래 위치와 같을 때
-					if(element.scrollTop === scrollTop) {
+					if(value.scrollTop === scrollTop) {
 						result.splice(i, 1);
 						i--;
 					}else{
-						element.scrollTop = scrollTop;
+						value.scrollTop = scrollTop;
 					}
 				}
 				
@@ -61,13 +59,13 @@ try {
 					result = body;	
 				}
 
-				yStyle.display = 'none';
+				style.display = 'none';
 			
 			}
 
 			return result;
 		};
-	})();
+	})(document.documentElement, document.scrollingElement);
 }catch(e) {
 	console.error(e);
 }
