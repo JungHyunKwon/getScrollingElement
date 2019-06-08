@@ -3,8 +3,11 @@
  * @version 1.0.0
  */
 try {
-	(function(_html, _scrollingElement) {
+	(function() {
 		'use strict';
+		
+		var _html = document.documentElement,
+			_scrollingElement = document.scrollingElement;
 
 		/**
 		 * @name getScrollingElement
@@ -65,7 +68,7 @@ try {
 
 			return result;
 		};
-	})(document.documentElement, document.scrollingElement);
+	})();
 }catch(e) {
 	console.error(e);
 }
