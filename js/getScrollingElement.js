@@ -51,6 +51,8 @@ try {
 					}
 				}
 				
+				style.display = 'none';
+
 				var resultLength = result.length;
 				
 				//결과가 1개일 때
@@ -61,9 +63,6 @@ try {
 				}else if(resultLength === 2) {
 					result = body;	
 				}
-
-				style.display = 'none';
-			
 			}
 
 			return result;
